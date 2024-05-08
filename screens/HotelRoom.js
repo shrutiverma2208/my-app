@@ -5,6 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 
 const HotelRoom = () => {
     const route= useRoute();
@@ -43,7 +45,7 @@ const HotelRoom = () => {
           <Text style={{fontSize:20,fontWeight:"bold"}}>
             {route.params.name}
             </Text>
-          <Text style={{fontSize:16,color:"gray",fontWeight:"500"}}>
+          <Text style={{fontSize:16,color:"gray",fontWeight:"500",marginVertical:5,}}>
             {route.params.cuisines}
             </Text> 
           <Text style={{fontSize:16,color:"#608286",fontWeight:"500"}}>
@@ -69,7 +71,7 @@ const HotelRoom = () => {
                    <MaterialIcons name="star-rate" size={19} color="white" />
              </View>
              <View style={{
-              backgroundColor:"#F962F9",
+              backgroundColor:"#F9629F",
               padding:7,
               width:100,
               justifyContent:"center",
@@ -82,7 +84,47 @@ const HotelRoom = () => {
                    <Text style={{color:"white",fontWeight:"bold",}}>Photos</Text>
              </View>
         </View>
+       
       </View>
+      <View style={{marginLeft:10,flexDirection:"row",alignItems:"center",justifyContent:"space-between",marginTop:15}}>
+          <View 
+          style={{flexDirection:"row",alignItems:"center"}}>
+          <FontAwesome 
+          style={{backgroundColor:"#D8D8D8", padding:4}}
+          name="motorcycle" size={24} color="gray" />
+            <View style={{marginLeft:8}}>
+               <Text>Mode</Text>
+               
+               <Text>Delivery</Text>
+            </View>
+          </View>
+
+          <View style={{flexDirection:"row",alignItems:"center"}}>
+          <Ionicons 
+          style={{backgroundColor:"#D8D8D8", padding:4}}
+          name="time-outline" size={24} color="gray" />            
+          <View style={{marginLeft:8}}>
+               <Text>TIME</Text>
+               
+               <Text>30mins or free</Text>
+            </View>
+          </View>
+
+          <View style={{flexDirection:"row",alignItems:"center",marginRight:15}}>
+          <MaterialCommunityIcons 
+          style={{backgroundColor:"#D8D8D8", padding:4}}
+          name="brightness-percent" size={24} color="gray" />
+            <View style={{marginLeft:8}}>
+               <Text>OFFERS</Text>
+               
+               <Text>View all</Text>
+            </View>
+          </View>
+        </View>
+        <View style={{marginLeft:10,backgroundColor:"#C8C8C8",marginTop:10}}>
+        <Fontisto name="motorcycle" size={24} color="black" />
+            <Text>Rs30 additional distance free</Text>
+        </View>
     </SafeAreaView>
   )
 }
