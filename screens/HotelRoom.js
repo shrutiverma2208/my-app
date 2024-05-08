@@ -121,9 +121,17 @@ const HotelRoom = () => {
             </View>
           </View>
         </View>
-        <View style={{marginLeft:10,backgroundColor:"#C8C8C8",marginTop:10}}>
-        <Fontisto name="motorcycle" size={24} color="black" />
-            <Text>Rs30 additional distance free</Text>
+        <View style={{marginLeft:10,
+          backgroundColor:"#C8C8C8",
+          marginTop:15,
+          marginRight:10,
+          alignItems:"center",
+          flexDirection:"row",
+          padding:7,
+          borderRadius:7,
+          }}>
+        <Fontisto style={{paddingLeft:10}} name="motorcycle" size={24} color="black" />
+            <Text style={{paddingLeft:10,fontSize:16}}>Rs30 additional distance free</Text>
         </View>
     </SafeAreaView>
   )
