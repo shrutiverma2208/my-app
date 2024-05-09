@@ -4,7 +4,7 @@ import React from 'react'
 const ItemComponent = () => {
   return (
     <View>
-      <Text style={{fontSize:20,fontWeight:'bold',padding:4}}>Eat what mekes you happy</Text>
+      <Text style={{fontSize:20,fontWeight:'bold',padding:4}}>Eat what makes you happy</Text>
       <View style={{flexDirection:'row',alignItems:'center'}}>
 
 

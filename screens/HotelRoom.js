@@ -1,4 +1,4 @@
-import { StyleSheet, Text, SafeAreaView, Pressable, View } from 'react-native'
+import { StyleSheet, Text, SafeAreaView, Pressable, View, ScrollView } from 'react-native'
 import React from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons';
@@ -7,14 +7,17 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
+import menuData from "../data/menuData";
+import Menu from '../components/Menu';
 
 const HotelRoom = () => {
+  const data= menuData;
     const route= useRoute();
     console.log(route.params)
     const navigation= useNavigation();
   return (
     
-    <SafeAreaView>
+    <ScrollView style={{marginTop:40,backgroundColor:"white"}}>
       <Pressable 
       style={{
         flexDirection:"row",
@@ -133,7 +136,13 @@ const HotelRoom = () => {
         <Fontisto style={{paddingLeft:10}} name="motorcycle" size={24} color="black" />
             <Text style={{paddingLeft:10,fontSize:16}}>Rs30 additional distance free</Text>
         </View>
-    </SafeAreaView>
+        <View style={{margin:10}}>
+          <Text style={{fontSize:17}}>Full Menu</Text>
+          <Text style={{borderColor:"#ff1493",borderWidth:2,height:2,width:70,marginTop:4}}/>
+        </View>
+
+        {data.map((item)=><Menu menu={item}/>)}
+    </ScrollView>
   )
 }
 
