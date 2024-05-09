@@ -4,8 +4,7 @@ import {FontAwesome} from "@expo/vector-icons"
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const Menu = (props) => {
-    const menu = props.menu;
+const Menu = ({menu,cart,setCart}) => {
     const bestSeller =true;
     const [additems,setAddItems] = useState(0);
   return (
@@ -95,7 +94,10 @@ style={{width:110,height:110,borderRadius:8,marginBottom:15,marginRight:15}}
             borderRadius: 5,
           }}
         >
-        <Pressable onPress={()=>setAddItems(Math.max(0,additems-1))}>
+        <Pressable onPress={()=>{
+          setCart(cart.filter((p)=>p.id !==menu.id));
+          setAddItems(Math.max(0,additems-1))
+          }}>
           <Text 
           style={{fontSize:25,color:"white",paddingHorizontal:10}}>
            -
@@ -109,7 +111,9 @@ style={{width:110,height:110,borderRadius:8,marginBottom:15,marginRight:15}}
           </Text>
         </Pressable>
 
-        <Pressable onPress={()=>setAddItems(additems+1)}>
+        <Pressable onPress={()=>{
+          setCart([...cart,menu])
+          setAddItems(additems+1)}}>
           <Text 
            style={{fontSize:20 ,color:"white",paddingHorizontal:10}}>
            +

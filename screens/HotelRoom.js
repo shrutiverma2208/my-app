@@ -1,5 +1,5 @@
 import { StyleSheet, Text, SafeAreaView, Pressable, View, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
@@ -9,12 +9,15 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import menuData from "../data/menuData";
 import Menu from '../components/Menu';
+import { CartItems } from '../Context';
 
 const HotelRoom = () => {
   const data= menuData;
     const route= useRoute();
-    console.log(route.params)
     const navigation= useNavigation();
+    const {cart,setCart}= useContext(CartItems);
+    console.log(cart,"Cart items added")
+    console.log(cart.length,"no. of items in the cart")
   return (
     
     <ScrollView style={{marginTop:40,backgroundColor:"white"}}>
@@ -141,7 +144,7 @@ const HotelRoom = () => {
           <Text style={{borderColor:"#ff1493",borderWidth:2,height:2,width:70,marginTop:4}}/>
         </View>
 
-        {data.map((item)=><Menu menu={item}/>)}
+        {data.map((item)=><Menu cart={cart} setCart={setCart} menu={item}/>)}
     </ScrollView>
   )
 }
