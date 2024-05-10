@@ -10,6 +10,7 @@ import { Fontisto } from '@expo/vector-icons';
 import menuData from "../data/menuData";
 import Menu from '../components/Menu';
 import { CartItems } from '../Context';
+import ViewCart from '../components/ViewCart';
 
 const HotelRoom = () => {
   const data= menuData;
@@ -20,6 +21,7 @@ const HotelRoom = () => {
     console.log(cart.length,"no. of items in the cart")
   return (
     
+    <>
     <ScrollView style={{marginTop:40,backgroundColor:"white"}}>
       <Pressable 
       style={{
@@ -146,6 +148,9 @@ const HotelRoom = () => {
 
         {data.map((item)=><Menu cart={cart} setCart={setCart} menu={item}/>)}
     </ScrollView>
+
+    <ViewCart restaurantName={route.params.name}/>
+    </>
   )
 }
 
