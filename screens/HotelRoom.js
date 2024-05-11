@@ -17,6 +17,7 @@ const HotelRoom = () => {
     const route= useRoute();
     const navigation= useNavigation();
     const {cart,setCart}= useContext(CartItems);
+    console.log(route.params,"paeamssssssssssssss");
     console.log(cart,"Cart items added")
     console.log(cart.length,"no. of items in the cart")
   return (
