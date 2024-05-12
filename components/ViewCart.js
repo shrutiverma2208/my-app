@@ -1,20 +1,62 @@
 import { Pressable, StyleSheet, Text, View,Modal, ScrollView } from 'react-native'
-import React, { useContext,useState } from 'react'
+import React, { useContext,useState ,useEffect} from 'react';
+import {Audio} from 'expo-av';
 import { CartItems } from '../Context'
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const ViewCart = (props) => {
+    const navigation = useNavigation();
     const {cart,setCart} =useContext(CartItems);
+    const [modal,setModal]= useState(false);
+
     const total =cart
-    .map((item)=> Number(item.price.replace("Rs","")))
+    .map((item)=> Number(item.price.replace("₹","")))
     .reduce((prev,curr)=> prev+curr,0);
     console.log(total,"Total price:")
-    const [modal,setModal]= useState(false);
+    
     const restaurantName =props.restaurantName;
-    const totalPrice = total+50+3
+    console.log(restaurantName)
+    const totalPrice = total+50+3;
+
+    const [sound,setSound] = React.useState();
+
+    async function playSound() {
+        console.log("Loading Sound");
+        const { sound } = await Audio.Sound.createAsync(
+          require("../assets/zomato.mp3")
+        );
+        setSound(sound);
+    
+        console.log("Playing Sound");
+        await sound.playAsync();
+      }
+
+      React.useEffect(() => {
+        return sound
+          ? () => {
+              console.log("Unloading Sound");
+              sound.unloadAsync();
+            }
+          : undefined;
+      }, [sound]);
+
+      const onPress = ()=>{
+        setModal(false);
+        setCart([]);
+        navigation.navigate("OrderData",{
+        restaurant:restaurantName,
+    });
+      
+    setTimeout(()=>{
+        playSound();
+     },1000);
+    
+   
+    }
     const checkout =()=>{
         return(
             <View 
@@ -124,9 +166,16 @@ const ViewCart = (props) => {
                     alignItems:"center",
                     justifyContent:"space-between"}}>
                     <Text 
-                    style={{fontSize:16,fontWeight:"bold"}}>Grand Total</Text>
-                    <Text style={{marginLeft:"auto",marginRight:20,fontWeight:"bold"}}>Rs.{totalPrice}</Text>
+                    style={{
+                        fontSize:16,
+                        fontWeight:"bold"
+                        }}>Grand Total</Text>
+                    <Text s
+                    tyle={{marginLeft:"auto",marginRight:20,fontWeight:"bold"}}>Rs.{totalPrice}</Text>
                 </View>
+                <Pressable onPress={onPress} style={{backgroundColor:"red",padding:10}}>
+                    <Text style={{textAlign:"center",fontSize:18,fontWeight:"bold",color:"white"}}>Place Order </Text>
+                </Pressable>
                 </View>
                
             </View>
@@ -138,9 +187,9 @@ const ViewCart = (props) => {
         animationType="slide"
         transparent={true}
         visible={modal}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModal(!modal);
+        onCloseRequest={() => {
+          
+          setModal(false);
         }}>
              
              {checkout()}
@@ -172,9 +221,10 @@ const ViewCart = (props) => {
         )}
     </View>
     </>
-  )
-}
+  );
+};
 
-export default ViewCart
 
-const styles = StyleSheet.create({})
+export default ViewCart;
+
+const styles = StyleSheet.create({});
