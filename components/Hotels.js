@@ -16,35 +16,42 @@ const Hotels = (props) => {
         adress:restaurant.adress,
         cuisines:restaurant.cuisines,
         smalladress:restaurant.smalladress,
-    })}>
+    })}
+    style={{ margin: 10,
+      borderRadius: 20,
+      backgroundColor: "white",
+      alignItems:"center"}}>
     <View style={{margin:10}}>
       <Image 
       style=
       {{width:'100%',
       aspectRatio:6/4,
       margin:10,
-      borderTopLeftRadius:7
-      ,borderTopRightRadius:7
+      borderTopLeftRadius:6
+      ,borderTopRightRadius:6
     }}
        source={{uri:restaurant.featured_image}}/>
        <View 
-       style={{padding:8,backgroundColor:'white', flexDirection:'row', justifyContent:'space-between'}}>
+       style={{backgroundColor:'white', flexDirection:'row', justifyContent:'space-between'}}>
             <View>
-                <Text style={{fontSize:17,fontWeight:'600'}}>
+                <Text style={{fontSize:16,marginTop:10,paddingHorizontal:10,fontWeight:'600'}}>
                     {restaurant.name}
                     </Text>
-                <Text style={{fontSize:15,color:'gray',marginVertical:5}}>{restaurant.cuisines}</Text>
+                <Text style={{marginTop:5,paddingHorizontal:10,marginVertical:5,fontSize:14,color:'gray'}}>{restaurant.cuisines}</Text>
             </View>
             <View 
                 style={{
                 flexDirection:"row",
                 alignItems:'center',
-                backgroundColor:'#178169',
-                padding:7,
-                borderRadius:6,
+                backgroundColor:'#3CB371',
+                padding:5,
+                borderRadius:7,
+                marginBottom:14,
+                marginRight:10,
+                marginTop:14,
                 }}>
-                <Text style={{fontWeight:"bold",paddingRight:5,color:'white',fontSize:16}}>{restaurant.aggregate_rating}</Text>
-                <AntDesign name="star" size={18} color="white" />
+                <Text style={{fontWeight:"bold",color:'white',fontSize:16}}>{restaurant.aggregate_rating}</Text>
+                <AntDesign name="star" size={15} color="white" />
             </View>
         
        </View>
@@ -72,6 +79,7 @@ const Hotels = (props) => {
        borderRadius:5,
        flexDirection:"row",
        alignItems:"center",
+       paddingHorizontal:10,
        }}>
        <Ionicons name="time-outline" size={17} color="green" />
         <Text style={{fontSize:12,paddingLeft:3}}>{restaurant.time}</Text>
@@ -93,13 +101,16 @@ const Hotels = (props) => {
             justifyContent:"center",
              alignItems:'center'}}>
             <AntDesign 
-            style={{}} 
+            style={{ backgroundColor: "#4B9CD3",
+            borderRadius: 30,
+            
+            padding: 3,}} 
             name="doubleright" 
-            size={20} 
+            size={24} 
             color="white" />
 
             </View>
-         <Text style={{marginLeft:5}}>{restaurant.no_of_Delivery} + orders placed here</Text>
+         <Text style={{marginLeft:5,color:"#404040",fontWeight:600}}>{restaurant.no_of_Delivery} + orders placed here</Text>
          <View style={{marginLeft:20}}>
             <Text style={{fontSize:12,fontWeight:"bold"}}>MAX SAFETY</Text>
             <Text style={{fontSize:12,fontWeight:"bold",color:"gray"}}>DELIVERY</Text>
