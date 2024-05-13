@@ -17,13 +17,13 @@ const HotelRoom = () => {
     const route= useRoute();
     const navigation= useNavigation();
     const {cart,setCart}= useContext(CartItems);
-    console.log(route.params,"paeamssssssssssssss");
+    console.log(route.params,"params");
     console.log(cart,"Cart items added")
     console.log(cart.length,"no. of items in the cart")
   return (
     
     <>
-    <ScrollView style={{marginTop:40,backgroundColor:"white"}}>
+    <ScrollView style={{marginTop:10,backgroundColor:"white"}}>
       <Pressable 
       style={{
         flexDirection:"row",

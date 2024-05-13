@@ -202,19 +202,25 @@ const ViewCart = (props) => {
             <Pressable 
             onPress={() => setModal(true)}
              style={{
-                backgroundColor:"#fd5c63",
-                width:140,
-                borderRadius:4,
+                backgroundColor:"#FF3366",
+                borderRadius:6,
                 padding:10,
                 position:"absolute",
-                bottom:40,
-                left:120,
+                bottom:50,
+                left:100,
+                flex:1,
+                flexWrap:"wrap",
+                alignContent:"center",
+                
                 }}>
                     <Text 
                     style={{
                         textAlign:"center",
                         color:"white",
-                        fontWeight:"bold"
+                        fontWeight:"bold",
+                      
+                        
+                        
                         }}>ViewCart = Rs.{total}</Text>
 
             </Pressable>
