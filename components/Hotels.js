@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 
 const Hotels = (props) => {
     const restaurant = props.restaurant;
-    console.log(restaurant)
     const navigation = useNavigation();
   return (
     <Pressable onPress={()=>navigation.navigate("HotelRoom",{
@@ -27,8 +26,8 @@ const Hotels = (props) => {
       {{width:'100%',
       aspectRatio:6/4,
       margin:10,
-      borderTopLeftRadius:6
-      ,borderTopRightRadius:6
+      borderTopLeftRadius:6,
+      borderTopRightRadius:6,
     }}
        source={{uri:restaurant.featured_image}}/>
        <View 

@@ -7,6 +7,20 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 const Menu = ({menu,cart,setCart}) => {
     const bestSeller =true;
     const [additems,setAddItems] = useState(0);
+    const updateItem = (count) => {
+      console.log('making count', count)
+      setAddItems(count)
+    }
+    const updateCartHandler = (count) => {
+      const cartCopy = JSON.parse(JSON.stringify(cart));
+      const updatedCart = cartCopy.map((item)=>{
+        if(menu.id===item.id){
+          item.count=count
+        }
+        return item;
+      })
+      setCart(updatedCart)
+    }
   return (
     <View 
     style={{
@@ -18,7 +32,7 @@ const Menu = ({menu,cart,setCart}) => {
         <View >
         <View style={{marginLeft:20}}>
         <Text>{menu.name}</Text>
-      <Text>{menu.price}</Text>
+      <Text>₹ {menu.price}</Text>
     </View>
 
 <View 
@@ -49,7 +63,7 @@ style={{
   </Text>
   <View style={{backgroundColor:"#ffcccb",marginLeft:10,width:90,padding:2}}>
 
-  <Text style={{marginLeft:5, textAlign:"center",fontSize:14,color:"white"}}>
+  <Text style={{marginLeft:5, textAlign:"center",fontSize:14,color:"red"}}>
     {(bestSeller && menu.bestSeller || menu.mustTry)}
   </Text>
 
@@ -95,8 +109,14 @@ style={{width:110,height:110,borderRadius:8,marginBottom:15,marginRight:15}}
           }}
         >
         <Pressable onPress={()=>{
-          setCart(cart.filter((p)=>p.id !==menu.id));
-          setAddItems(Math.max(0,additems-1))
+          if(additems===1){
+            setCart(cart.filter((p)=>p.id !== menu.id));
+          }else{
+            updateCartHandler(Math.max(0, additems-1));
+          }
+
+           updateItem(Math.max(0, additems-1));
+
           }}>
           <Text 
           style={{fontSize:25,color:"white",paddingHorizontal:10}}>
@@ -112,8 +132,14 @@ style={{width:110,height:110,borderRadius:8,marginBottom:15,marginRight:15}}
         </Pressable>
 
         <Pressable onPress={()=>{
-          setCart([...cart,menu])
-          setAddItems(additems+1)}}>
+          if(additems===0){
+          setCart([...cart,menu]);
+          }else{
+            updateCartHandler(additems+1)
+          }
+          updateItem(additems+1)
+        }
+          }>
           <Text 
            style={{fontSize:20 ,color:"white",paddingHorizontal:10}}>
            +

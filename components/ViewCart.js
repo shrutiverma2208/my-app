@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View,Modal, ScrollView } from 'react-native'
+import { Pressable, StyleSheet, Text, View,Modal, ScrollView, Alert } from 'react-native'
 import React, { useContext,useState ,useEffect} from 'react';
 import {Audio} from 'expo-av';
 import { CartItems } from '../Context'
@@ -12,33 +12,30 @@ const ViewCart = (props) => {
     const navigation = useNavigation();
     const {cart,setCart} =useContext(CartItems);
     const [modal,setModal]= useState(false);
+    const [sound,setSound] = React.useState();
 
-    const total =cart
-    .map((item)=> Number(item.price.replace("₹","")))
-    .reduce((prev,curr)=> prev+curr,0);
-    console.log(total,"Total price:")
+    let total = 0;
+    cart.forEach(item=>{
+      total = total+item.count*item.price
+    })
     
     const restaurantName =props.restaurantName;
     console.log(restaurantName)
     const totalPrice = total+50+3;
 
-    const [sound,setSound] = React.useState();
 
     async function playSound() {
-        console.log("Loading Sound");
         const { sound } = await Audio.Sound.createAsync(
           require("../assets/zomato.mp3")
         );
         setSound(sound);
     
-        console.log("Playing Sound");
         await sound.playAsync();
       }
 
       React.useEffect(() => {
         return sound
           ? () => {
-              console.log("Unloading Sound");
               sound.unloadAsync();
             }
           : undefined;
@@ -99,10 +96,10 @@ const ViewCart = (props) => {
                      alignContent:"center",
                      justifyContent:"space-between",
                      }}
-                      key={key}
+                      key={key} item={item}
                     >
                         <Text style={{color:"#E52B50",fontWeight:"bold",fontSize:16}}>{item.name}</Text>
-                        <Text style={{color:"#E52B50",fontWeight:"500"}}>{item.price}</Text>
+                        <Text style={{color:"#E52B50",fontWeight:"500"}}>₹{item.price}</Text>
                     </View>
                   ))}
                  <View style={{borderColor:"#F0F0F0",height:1,borderWidth:1}}/>
@@ -187,20 +184,16 @@ const ViewCart = (props) => {
         animationType="slide"
         transparent={true}
         visible={modal}
-        onCloseRequest={() => {
-          
-          setModal(false);
-        }}>
+        onRequestClose={() => 
+          setModal(!modal)
+        }>
              
              {checkout()}
         </Modal>
 
     <View>
-        {total === 0 ?
-            null
-        :(
+        {total === 0 ? null : (
             <Pressable 
-            onPress={() => setModal(true)}
              style={{
                 backgroundColor:"#FF3366",
                 borderRadius:6,
@@ -212,16 +205,16 @@ const ViewCart = (props) => {
                 flexWrap:"wrap",
                 alignContent:"center",
                 
-                }}>
+                }}
+                onPress={() => setModal(true)}
+                >
                     <Text 
                     style={{
                         textAlign:"center",
                         color:"white",
                         fontWeight:"bold",
-                      
-                        
-                        
-                        }}>ViewCart = Rs.{total}</Text>
+
+                        }}>ViewCart . ₹{total}</Text>
 
             </Pressable>
         )}

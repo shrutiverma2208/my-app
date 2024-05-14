@@ -17,7 +17,6 @@ const HotelRoom = () => {
     const route= useRoute();
     const navigation= useNavigation();
     const {cart,setCart}= useContext(CartItems);
-    console.log(route.params,"params");
     console.log(cart,"Cart items added")
     console.log(cart.length,"no. of items in the cart")
   return (
@@ -40,7 +39,8 @@ const HotelRoom = () => {
           borderRadius:20,
           justifyContent:'center',
           alignItems:"center",
-          marginLeft:10}}>
+          marginLeft:10
+          }}>
         <Ionicons name="chevron-back" size={24} color="white" />
         </Pressable>
         <Pressable style={{flexDirection:'row',alignItems:'center',marginRight:10}}>

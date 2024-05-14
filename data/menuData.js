@@ -2,10 +2,11 @@ const menu =  [
     {
       id: "1",
       name: "Special chicken Biriyani",
-      price: "₹190",
+      price: "190",
       review: 340,
       star: 4,
       bestSeller: "bestseller",
+      count:1,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQXzSMBPdLvdKarO-liPkR_E2LHVSVvTQXSg&usqp=CAU",
     },
@@ -15,7 +16,8 @@ const menu =  [
       review: 120,
       star: 4.3,
       bestSeller: "bestseller",
-      price: "₹160",
+      price: "160",
+      count:1,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEahRgmE0FWYRXY9EavY2ISodsl8S2o0AttKn7yFxbTGtRAma2WVH8dcEMz9FJoo8Hfms&usqp=CAU",
     },
@@ -24,8 +26,9 @@ const menu =  [
       name: "Nellore chicken biriyani",
       review: 190,
       star: 5,
-      price: "₹250",
+      price: "250",
       mustTry: "Must try",
+      count:1,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ8l64pcgGLabTz1X5LY_bxmm3uh6fC1r-9w&usqp=CAU",
     },
@@ -34,8 +37,9 @@ const menu =  [
       name: "Nati style Kabab",
       review: 290,
       star: 3,
-      price: "₹210",
+      price: "210",
       bestSeller: "bestseller",
+      count:1,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEAyEksZRDMXZ3END0K3w_TRTOfX8RLYqkAA&usqp=CAU",
     },
@@ -44,8 +48,10 @@ const menu =  [
       name: "Tandoori chicken",
       review: 430,
       star: 4,
-      price: "₹300",
+      price: "300",
       mustTry: "Must try",
+      count:1,
+
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6rYEEiCVFTpxhM2j-meAok4YB0quWNQrcaA&usqp=CAU",
     },
@@ -55,7 +61,9 @@ const menu =  [
       review: 410,
       star: 3,
       bestSeller: "bestseller",
-      price: "₹200",
+      price: "200",
+      count:1,
+
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYkd4XOokYlJ-pNz6JKGpULrWhspBK3Rc72Q&usqp=CAU",
     },
@@ -65,7 +73,9 @@ const menu =  [
       review: 430,
       star: 5,
       bestSeller: "bestseller",
-      price: "₹270",
+      price: "270",
+      count:1,
+
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStR8Gy5Usg7wdzRkRqF9RosfcWtMHyVHhOWg&usqp=CAU",
     },
@@ -74,8 +84,10 @@ const menu =  [
       name: "chicken masala",
       review: 130,
       star: 4,
-      price: "₹200",
+      price: "200",
       mustTry: "Must try",
+      count:1,
+
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6rYEEiCVFTpxhM2j-meAok4YB0quWNQrcaA&usqp=CAU",
     },
